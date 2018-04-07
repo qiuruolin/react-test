@@ -2,9 +2,13 @@
   display: flex;
   display: -webkit-flex;
 }
+.fontFamily {
+  font-family: 'Times New Roman', Times, serif;
+}
 .tabs {
   padding: 5px 10px 5px 10px;
   font-size: 1.4rem;
+  font-family: 'Times New Roman', Times, serif;
 }
 .tabpane {
   padding: 5px 10px 5px 10px;

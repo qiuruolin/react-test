@@ -2,6 +2,9 @@
   display: flex;
   display: -webkit-flex;
 }
+.fontFamily {
+  font-family: 'Times New Roman', Times, serif;
+}
 .header {
   color: #fff;
   font-size: 1.4rem;
