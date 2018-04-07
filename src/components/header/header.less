@@ -1,7 +1,10 @@
-@font-color: #666;
-@font-size: 14px;
+@import '../../asserts/style.less';
 
 .header{
-    color: @font-color;
+    color: @white;
     font-size: @font-size;
+    .padding(10px, 5px, 10px, 5px);
+    .flex;
+    justify-content: space-between;
+    background: @basic-color;
 }

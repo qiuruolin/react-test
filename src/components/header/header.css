@@ -1,4 +1,13 @@
+.flex {
+  display: flex;
+  display: -webkit-flex;
+}
 .header {
-  color: #666;
-  font-size: 14px;
+  color: #fff;
+  font-size: 1.4rem;
+  padding: 10px 5px 10px 5px;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  background: #46abee;
 }

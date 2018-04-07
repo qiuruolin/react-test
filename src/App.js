@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import 'antd/dist/antd.css';
 import Home from './views/home/Home';
 
 class App extends Component {
