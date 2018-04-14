@@ -73,8 +73,8 @@ class Register extends React.Component{
                     </Input.Group>
                 </div>
                 <div className="submit">
-                    <a className="gotoReg" type="button">已有账号，点击登录</a>
                     <Button type="primary">立即注册</Button>
+                    <a className="gotoReg" type="button" onClick={this.props.gotoLogin}>已有账号，点击登录</a>
                 </div>
             </div>
         );

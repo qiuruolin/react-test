@@ -13,10 +13,13 @@ class User extends React.Component{
         }
     }
     gotoReg(){
-        this.setState({ content: "register"})
+        this.setState({ content: "register"});
+    }
+    gotoLogin(){
+        this.setState({ content: "login" });
     }
     render(){
-        const Content = this.state.content === "login"? <Login gotoRegister={() => {this.gotoReg()}}/> : <Register/>;
+        const Content = this.state.content === "login"? <Login gotoRegister={() => {this.gotoReg()}}/> : <Register gotoLogin={() => {this.gotoLogin()}}/>;
         return(
             <div className="user">
                 <Header title="个人中心"/>
