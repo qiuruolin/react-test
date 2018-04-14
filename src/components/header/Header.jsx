@@ -6,7 +6,7 @@ class Header extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-          date: '',
+          title: this.props.title
         };
     }
     MoreSelect(){
@@ -16,7 +16,7 @@ class Header extends React.Component{
         return(
             <div className="header">
                 <Icon type="bars" style={{fontSize: 22}} onClick={() => this.MoreSelect(this)}/>
-                首页
+                {this.state.title}
                 <Icon type="apple-o" style={{fontSize: 22}}/>
             </div>
         );

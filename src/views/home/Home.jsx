@@ -8,7 +8,7 @@ class Home extends React.Component{
     render(){
         return(
             <div className="home">
-                <Header/>
+                <Header title="首页"/>
                 <Tab/>
                 <Footer/>
             </div>

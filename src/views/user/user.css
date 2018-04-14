@@ -1,0 +1,23 @@
+.flex {
+  display: flex;
+  display: -webkit-flex;
+}
+.fontFamily {
+  font-family: 'Times New Roman', Times, serif;
+}
+.content {
+  padding: 10px 5px 10px 5px;
+}
+.submit {
+  margin-top: 10px;
+  text-align: center;
+}
+.gotoReg {
+  display: inline-block;
+  margin-left: 5px;
+  color: #46abee;
+}
+.gotoReg:hover {
+  color: #36a1e9;
+  text-decoration: underline;
+}

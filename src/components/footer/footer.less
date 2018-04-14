@@ -1,7 +1,7 @@
 @import '../../assets/style.less';
 
 .footer{
-    .padding(10px, 5px, 10px, 5px);
+    .padding();
     background: @basic-color;
     color: @white;
     position: fixed;
@@ -15,5 +15,8 @@
     font-size: @font-size;
 }
 .active{
-    color:red;
+    color: @white;
+    .title{
+        font-size: @emphic-size;
+    }
 }

@@ -12,7 +12,7 @@ class RouterIndex extends React.Component{
                     <Route exact path="/home" component={Home}/>
                     <Route exact path="/info" component={Info}/>
                     <Route exact path="/user" component={User}/>
-                    <Redirect exact from="/" to="/home" />
+                    <Redirect exact from="/*" to="/home" />
                 </Switch>
             </Router>
         );
