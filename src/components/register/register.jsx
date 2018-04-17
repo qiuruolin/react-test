@@ -7,7 +7,8 @@ class Register extends React.Component{
         this.state = {
             userName: "",
             password: "",
-            passwordRepeat: ""
+            passwordRepeat: "",
+            mail: ""
         }
     }
     emitEmpty = (arg, e) => {
@@ -23,6 +24,10 @@ class Register extends React.Component{
             this.passwordRepInput.focus();
             this.setState({ passwordRepeat: '' });
         }
+        else if(arg === "mail"){
+            this.mailInput.focus();
+            this.setState({ mail: '' });
+        }
     }
     onChangeUserName = (e) => {
         this.setState({ userName: e.target.value });
@@ -33,11 +38,15 @@ class Register extends React.Component{
     onChangePasswordRep = (e) => {
         this.setState({ passwordRepeat: e.target.value});
     }
+    onChangeMail = (e) => {
+        this.setState({ mail: e.target.value });
+    }
     render(){
-        const { userName, password, passwordRepeat } = this.state;
+        const { userName, password, passwordRepeat, mail} = this.state;
         const suffix = userName ? <Icon type="close-circle" onClick={this.emitEmpty.bind(this, "username")} /> : null;
         const suffixPwd = password ? <Icon type="close-circle" onClick={this.emitEmpty.bind(this, "password")} /> : null;
-        const suffixPwdRep = password ? <Icon type="close-circle" onClick={this.emitEmpty.bind(this, "passwordRep")} /> : null;
+        const suffixPwdRep = passwordRepeat ? <Icon type="close-circle" onClick={this.emitEmpty.bind(this, "passwordRep")} /> : null;
+        const suffixMail = mail ? <Icon type="close-circle" onClick={this.emitEmpty.bind(this, "mail")} /> : null;
         return(
             <div className="login">
                 <div className="meaasge">
@@ -69,6 +78,16 @@ class Register extends React.Component{
                             onChange={this.onChangePasswordRep}
                             prefix={<Icon type="key" style={{ color: 'rgba(0,0,0,.25)' }} />}
                             ref={node => this.passwordRepInput = node}
+                        />
+                        <Input 
+                            placeholder="Enter your email"
+                            style={{marginTop: '10px'}}
+                            type="text"
+                            value={mail}
+                            suffix={suffixMail}
+                            onChange={this.onChangeMail}
+                            prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                            ref={node => this.mailInput = node}
                         />
                     </Input.Group>
                 </div>

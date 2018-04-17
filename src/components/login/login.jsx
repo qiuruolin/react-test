@@ -1,9 +1,12 @@
 import React from 'react';
 import {Input, Icon, Button} from 'antd';
+import { PropTypes } from 'prop-types';
+// import Store from '../../store/index'
+// import * as Actions from '../../action/action'
 
 class Login extends React.Component{
-    constructor(props){
-        super(props);
+    constructor(props, context){
+        super(props, context);
         this.state = {
             userName: "",
             password: ""
@@ -24,6 +27,27 @@ class Login extends React.Component{
     }
     onChangePassword = (e) => {
         this.setState({ password: e.target.value});
+    }
+    checkLogin = (e) =>{
+        // console.log(Store.getState());
+        // Store.dispatch(Actions.setToken({
+        //     name: "qi", 
+        //     password: "ss"
+        // }))
+        const {store, action} = this.context;
+        store.dispatch(action.setToken({
+            name: "qi", 
+            password: "ss"
+        }))
+    }
+    componentDidMount() {
+        // Store.subscribe(this.onChange);
+        this.context.store.subscribe(this.onChange);
+    }
+    onChange = (e) => {
+        console.log("qiu")
+
+        console.log(this.context.store.getState());
     }
     render(){
         const { userName, password } = this.state;
@@ -54,11 +78,17 @@ class Login extends React.Component{
                     </Input.Group>
                 </div>
                 <div className="submit">
-                    <Button type="primary">登录</Button>
+                    <Button type="primary" onClick={this.checkLogin}>登录</Button>
                     <a className="gotoReg" type="button" onClick={this.props.gotoRegister}>还没有账号，点击注册</a>
                 </div>
             </div>
         );
     }
 }
+
+Login.contextTypes = {
+    store: PropTypes.object,
+    action: PropTypes.object
+};
+
 export default Login;
