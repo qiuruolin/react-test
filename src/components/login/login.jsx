@@ -1,6 +1,7 @@
 import React from 'react';
 import {Input, Icon, Button} from 'antd';
 import { PropTypes } from 'prop-types';
+//未将store提升至全局时使用的代码
 // import Store from '../../store/index'
 // import * as Actions from '../../action/action'
 
@@ -29,6 +30,7 @@ class Login extends React.Component{
         this.setState({ password: e.target.value});
     }
     checkLogin = (e) =>{
+        //未将store提升至全局时使用的代码
         // console.log(Store.getState());
         // Store.dispatch(Actions.setToken({
         //     name: "qi", 
@@ -41,12 +43,13 @@ class Login extends React.Component{
         }))
     }
     componentDidMount() {
+        //未将store提升至全局时使用的代码
         // Store.subscribe(this.onChange);
         this.context.store.subscribe(this.onChange);
     }
     onChange = (e) => {
-        console.log("qiu")
-
+        //未将store提升至全局时使用的代码
+        // Store.getState()
         console.log(this.context.store.getState());
     }
     render(){
