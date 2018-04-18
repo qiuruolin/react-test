@@ -1,5 +1,5 @@
 import React from 'react';
-import {Input, Icon, Button} from 'antd';
+import {Input, Icon, Button, message} from 'antd';
 import { PropTypes } from 'prop-types';
 //未将store提升至全局时使用的代码
 // import Store from '../../store/index'
@@ -37,21 +37,27 @@ class Login extends React.Component{
         //     password: "ss"
         // }))
         const {store, action} = this.context;
-        store.dispatch(action.setToken({
-            name: "qi", 
-            password: "ss"
-        }))
+        const {userName, password} = this.state;
+        if(userName === "" || password === ""){
+            message.error("用户名或密码不能为空")
+        }
+        else{
+            store.dispatch(action.setToken({
+                username: userName, 
+                password: password
+            }))
+        }
     }
-    componentDidMount() {
-        //未将store提升至全局时使用的代码
-        // Store.subscribe(this.onChange);
-        this.context.store.subscribe(this.onChange);
-    }
-    onChange = (e) => {
-        //未将store提升至全局时使用的代码
-        // Store.getState()
-        console.log(this.context.store.getState());
-    }
+    // componentDidMount() {
+    //     //未将store提升至全局时使用的代码
+    //     // Store.subscribe(this.onChange);
+    //     this.context.store.subscribe(this.onChange);
+    // }
+    // onChange = (e) => {
+    //     //未将store提升至全局时使用的代码
+    //     // Store.getState()
+    //     console.log(this.context.store.getState());
+    // }
     render(){
         const { userName, password } = this.state;
         const suffix = userName ? <Icon type="close-circle" onClick={this.emitEmpty.bind(this, "username")} /> : null;

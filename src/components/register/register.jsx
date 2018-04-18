@@ -1,5 +1,5 @@
 import React from 'react';
-import {Input, Icon, Button} from 'antd';
+import {Input, Icon, Button, message} from 'antd';
 
 class Register extends React.Component{
     constructor(props){
@@ -40,6 +40,15 @@ class Register extends React.Component{
     }
     onChangeMail = (e) => {
         this.setState({ mail: e.target.value });
+    }
+    register = (e) => {
+        const { userName, password, passwordRepeat, mail} = this.state;
+        if(userName === "" || password === "" || passwordRepeat === "" || mail === ""){
+            message.error("请填写完整信息")
+        }
+        else{
+            message.info("success")
+        }
     }
     render(){
         const { userName, password, passwordRepeat, mail} = this.state;
@@ -92,7 +101,7 @@ class Register extends React.Component{
                     </Input.Group>
                 </div>
                 <div className="submit">
-                    <Button type="primary">立即注册</Button>
+                    <Button type="primary" onClick={this.register}>立即注册</Button>
                     <a className="gotoReg" type="button" onClick={this.props.gotoLogin}>已有账号，点击登录</a>
                 </div>
             </div>
