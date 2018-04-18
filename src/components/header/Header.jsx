@@ -2,6 +2,8 @@ import React from 'react';
 import {Icon, message} from 'antd';
 import './header.css'
 import { PropTypes } from 'prop-types';
+// import {createBrowserHistory} from 'history';
+// const history = createBrowserHistory();
 
 class Header extends React.Component{
     constructor(props, context) {
@@ -20,13 +22,14 @@ class Header extends React.Component{
             message.warn("您还未登录")
         }
     }
-    MoreSelect(){
+    MoreSelect = (e) => {
         message.info("success");
+        // this.props.history.replace({pathname:'/menu'});
     }
     render(){
         return(
             <div className="header">
-                <Icon type="bars" style={{fontSize: 22}} onClick={() => this.MoreSelect(this)}/>
+                <Icon type="bars" style={{fontSize: 22}} onClick={this.MoreSelect}/>
                 {this.state.title}
                 <Icon type="logout" style={{fontSize: 22}} onClick={this.toggleUser}/>
             </div>
