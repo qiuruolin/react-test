@@ -35,8 +35,8 @@ class User extends React.Component{
                 case "home":
                     this.props.history.push('/home');
                     break;
-                case "info":
-                    this.props.history.push('/info');
+                case "order":
+                    this.props.history.push('/order');
                     break;
                 default:
                     break;
@@ -76,7 +76,7 @@ class User extends React.Component{
         }
         return(
             <div className="user">
-                <Header title="个人中心" history={this.props.history}/>
+                <Header type="user" title="个人中心" history={this.props.history}/>
                 <div className="content">
                     {Content}
                 </div>

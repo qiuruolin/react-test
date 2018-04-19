@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom';
 import React from 'react';
 import Home from '../views/home/Home';
-import Info from '../views/info/Info';
+import Order from '../views/order/order';
 import User from '../views/user/User';
 import MenuSelf from '../views/menu/menu';
 
@@ -11,9 +11,9 @@ class RouterIndex extends React.Component{
             <Router>
                 <Switch>
                     <Route exact path="/home" component={Home}/>
-                    <Route path="/info" component={Info}/>
+                    <Route path="/order" component={Order}/>
                     <Route path="/user/:type" component={User}/>
-                    <Route path="/menu" component={MenuSelf}/>
+                    <Route path="/menu/:type" component={MenuSelf}/>
                     <Redirect from="/*" to="/home" />
                 </Switch>
             </Router>

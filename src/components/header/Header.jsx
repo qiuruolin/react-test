@@ -24,8 +24,7 @@ class Header extends React.Component{
     }
     MoreSelect = (e) => {
         // message.info("success");
-        console.log(this.props.history);
-        this.props.history.push('/menu');
+        this.props.history.push('/menu/' + this.props.type);
     }
     render(){
         return(

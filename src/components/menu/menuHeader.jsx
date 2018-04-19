@@ -1,10 +1,21 @@
 import React from 'react';
 import {Icon} from 'antd';
-import '../header/header.css'
+import '../header/header.css';
 
 class MenuHeader extends React.Component{
+    constructor(props, context){
+        super(props, context);
+        this.state = {
+            to: this.props.type
+        }
+    }
     goBack = (e) => {
-        this.props.history.push('/home');
+        const {to} = this.state;
+        if(to === "user"){
+            this.props.history.replace('/' + to + "/login");
+        }
+        else
+            this.props.history.replace('/' + to);
     }
     render(){
         return(

@@ -5,6 +5,7 @@ import Footer from '../../components/footer/Footer';
 import Tab from '../../components/tabs/Tab';
 import NoAuthorize from '../../components/noAuthorize/noAuthorize';
 import { PropTypes } from 'prop-types';
+import TransitionGroup from 'react-addons-css-transition-group';
 
 class Home extends React.Component{
     constructor(props, context){
@@ -35,11 +36,19 @@ class Home extends React.Component{
     render(){
         const Content = this.state.authorize ? <Tab/> : <NoAuthorize type="home" history={this.props.history}/>;
         return(
-            <div className="home">
-                <Header title="首页" history={this.props.history}/>
+            <TransitionGroup 
+            transitionName="fade"
+            className="home"
+            transitionAppear={true} 
+            transitionAppearTimeout={500}
+            transitionEnter={false}
+            transitionLeave={false}
+            transitionEnterTimeout={10000} 
+            transitionLeaveTimeout={200}>
+                <Header type="home" title="首页" history={this.props.history}/>
                 {Content}
                 <Footer/>
-            </div>
+            </TransitionGroup>
         );
     }
 }

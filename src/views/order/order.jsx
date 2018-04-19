@@ -3,9 +3,9 @@ import Footer from '../../components/footer/Footer';
 import Header from '../../components/header/Header';
 import NoAuthorize from '../../components/noAuthorize/noAuthorize';
 import { PropTypes } from 'prop-types';
-import InfoContent from '../../components/info/infoContent';
+import OrderContent from '../../components/order/orderContent';
 
-class Info extends React.Component{
+class Order extends React.Component{
     constructor(props, context){
         super(props, context);
         this.state = {
@@ -32,17 +32,17 @@ class Info extends React.Component{
         this.subscribe();
     }
     render(){
-        const Content = this.state.authorize ? <InfoContent/> : <NoAuthorize type="info" history={this.props.history}/>;
+        const Content = this.state.authorize ? <OrderContent/> : <NoAuthorize type="order" history={this.props.history}/>;
         return(
             <div className="info">
-                <Header title="通知" history={this.props.history}/>
+                <Header type="order" title="订单" history={this.props.history}/>
                 {Content}
                 <Footer/>
             </div>
         );
     }
 }
-Info.contextTypes = {
+Order.contextTypes = {
     store: PropTypes.object
 };
-export default Info;
+export default Order;
