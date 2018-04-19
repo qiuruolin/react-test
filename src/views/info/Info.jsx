@@ -26,10 +26,10 @@ class Info extends React.Component{
     //     }
     // }
     render(){
-        const Content = this.state.authorize ? <InfoContent/> : <NoAuthorize/>;
+        const Content = this.state.authorize ? <InfoContent/> : <NoAuthorize history={this.props.history}/>;
         return(
             <div className="info">
-                <Header title="通知"/>
+                <Header title="通知" history={this.props.history}/>
                 {Content}
                 <Footer/>
             </div>

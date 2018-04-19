@@ -19,12 +19,18 @@ class User extends React.Component{
         if(obj.username){
             this.setState({content: "user"})
         }
-        this.context.store.subscribe(this.onChange);
+        else{
+            this.setState({content: "login"})
+        }
+        this.subscribe = this.context.store.subscribe(this.onChange);
     }
     onChange = (e) => {
         let obj = this.context.store.getState();
         if(obj.username){
             this.setState({content: "user"})
+        }
+        else{
+            this.setState({content: "login"})
         }
     }
     gotoReg(){
@@ -32,6 +38,10 @@ class User extends React.Component{
     }
     gotoLogin(){
         this.setState({ content: "login" });
+    }
+    componentWillUnmount(){
+        //取消监听事件
+        this.subscribe();
     }
     render(){
         const {content} = this.state;
@@ -52,7 +62,7 @@ class User extends React.Component{
         }
         return(
             <div className="user">
-                <Header title="个人中心"/>
+                <Header title="个人中心" history={this.props.history}/>
                 <div className="content">
                     {Content}
                 </div>

@@ -27,10 +27,10 @@ class Home extends React.Component{
     //     }
     // }
     render(){
-        const Content = this.state.authorize ? <Tab/> : <NoAuthorize/>;
+        const Content = this.state.authorize ? <Tab/> : <NoAuthorize history={this.props.history}/>;
         return(
             <div className="home">
-                <Header title="首页"/>
+                <Header title="首页" history={this.props.history}/>
                 {Content}
                 <Footer/>
             </div>
