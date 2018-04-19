@@ -17,16 +17,22 @@ class Info extends React.Component{
         if(status.getState().username){
             this.setState({authorize: true});
         }
-        // status.subscribe(this.onChange);
+        this.subscribe = status.subscribe(this.onChange);
     }
-    // onChange = (e) => {
-    //     let obj = this.context.store.getState();
-    //     if(obj.username){
-    //         this.setState({authorize: true})
-    //     }
-    // }
+    onChange = (e) => {
+        let obj = this.context.store.getState();
+        if(obj.username){
+            this.setState({authorize: true})
+        }
+        else{
+            this.setState({authorize: false})
+        }
+    }
+    componentWillUnmount(){
+        this.subscribe();
+    }
     render(){
-        const Content = this.state.authorize ? <InfoContent/> : <NoAuthorize history={this.props.history}/>;
+        const Content = this.state.authorize ? <InfoContent/> : <NoAuthorize type="info" history={this.props.history}/>;
         return(
             <div className="info">
                 <Header title="通知" history={this.props.history}/>

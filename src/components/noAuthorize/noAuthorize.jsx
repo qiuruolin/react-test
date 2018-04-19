@@ -3,7 +3,7 @@ import React from 'react';
 
 class NoAuthorize extends React.Component{
     login = (e) => {
-        this.props.history.push('/user');
+        this.props.history.push('/user/'+ this.props.type);
     }
     render(){
         return(

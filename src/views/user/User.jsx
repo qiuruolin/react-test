@@ -11,7 +11,8 @@ class User extends React.Component{
     constructor(props, context){
         super(props, context);
         this.state = {
-            content: "login"
+            content: "login",
+            from: this.props.match.params.type
         }
     }
     componentDidMount() {
@@ -27,7 +28,20 @@ class User extends React.Component{
     onChange = (e) => {
         let obj = this.context.store.getState();
         if(obj.username){
-            this.setState({content: "user"})
+            switch(this.state.from){
+                case "login":
+                    this.setState({content: "user"});
+                    break;
+                case "home":
+                    this.props.history.push('/home');
+                    break;
+                case "info":
+                    this.props.history.push('/info');
+                    break;
+                default:
+                    break;
+            }
+           
         }
         else{
             this.setState({content: "login"})
