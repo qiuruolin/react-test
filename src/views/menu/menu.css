@@ -1,0 +1,16 @@
+.fade-enter{
+    opacity: 0.01;
+}
+.fade-enter.fade-enter-active{
+    opacity: 1;
+    color: red;
+    transition: opacity 10000ms ease-in;
+    transform: translateX(-100px);
+}
+.fade-leave{
+    opacity: 1;
+}
+.fade-leave.fade-leave-active{
+    opacity: 0.01;
+    transition: opacity 200ms ease-in;
+}
