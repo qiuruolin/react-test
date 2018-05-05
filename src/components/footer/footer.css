@@ -1,0 +1,29 @@
+.flex {
+  display: flex;
+  display: -webkit-flex;
+}
+.fontFamily {
+  font-family: 'Times New Roman', Times, serif;
+}
+.footer {
+  padding: 5px 5px 5px 5px;
+  background: #46abee;
+  color: #fff;
+  position: fixed;
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-around;
+  bottom: 0;
+  width: 100%;
+  font-size: 2.1rem;
+  z-index: 10;
+}
+.title {
+  font-size: 1.4rem;
+}
+.active {
+  color: #fff;
+}
+.active .title {
+  font-size: 1.6rem;
+}

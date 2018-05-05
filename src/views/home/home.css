@@ -1,0 +1,22 @@
+.flex {
+  display: flex;
+  display: -webkit-flex;
+}
+.fontFamily {
+  font-family: 'Times New Roman', Times, serif;
+}
+.tabs {
+  padding: 5px 10px 5px 10px;
+  font-size: 1.4rem;
+  font-family: 'Times New Roman', Times, serif;
+}
+.tabpane {
+  padding: 5px 10px 5px 10px;
+}
+/* .slide-in-appear {
+  transform: translate3D(100%, 0, 0);
+  transition: all 500ms linear;
+}
+.slide-in-appear.slide-in-appear-active {
+  transform: translate3D(0, 0, 0);
+} */

@@ -1,0 +1,17 @@
+.flex {
+  display: flex;
+  display: -webkit-flex;
+}
+.fontFamily {
+  font-family: 'Times New Roman', Times, serif;
+}
+html {
+  font-size: 65.2%;
+}
+a {
+  text-decoration: none;
+  color: #ccc;
+}
+a:hover {
+  color: #fff;
+}
