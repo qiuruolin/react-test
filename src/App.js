@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
-// import { Provider } from 'react-redux';
 import 'antd/dist/antd.css';
 import './App.css';
 import RouterIndex from './router/index';
-import Store from './store/index'
-import * as Actions from './action/action'
-import Provider from './util/Provider';
+import { Provider } from 'react-redux';
+import store from './store/store';
 
 class App extends Component {
   render() {
     return (
-        <Provider store={Store} action={Actions}>
+        <Provider store={store}>
           <RouterIndex/>
         </Provider>
     );

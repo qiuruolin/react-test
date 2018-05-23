@@ -1,51 +1,24 @@
 import React from 'react';
-import Header from '../../components/header/Header';
+import HeaderContainer from '../../components/header/HeaderContainer';
 import Footer from '../../components/footer/Footer';
-import Login from '../../components/login/login';
+import LoginContainer from '../../components/login/LoginContainer';
 import Register from '../../components/register/register'
 import './user.css';
 import UserContent from '../../components/user/userContent';
-import { PropTypes } from 'prop-types';
 
 class User extends React.Component{
-    constructor(props, context){
-        super(props, context);
+    constructor(props){
+        super(props);
         this.state = {
             content: "login",
             from: this.props.match.params.type
         }
     }
     componentDidMount() {
-        let obj = this.context.store.getState();
-        if(obj.username){
-            this.setState({content: "user"})
-        }
-        else{
-            this.setState({content: "login"})
-        }
-        this.subscribe = this.context.store.subscribe(this.onChange);
+        
     }
     onChange = (e) => {
-        let obj = this.context.store.getState();
-        if(obj.username){
-            switch(this.state.from){
-                case "login":
-                    this.setState({content: "user"});
-                    break;
-                case "home":
-                    this.props.history.push('/home');
-                    break;
-                case "order":
-                    this.props.history.push('/order');
-                    break;
-                default:
-                    break;
-            }
-           
-        }
-        else{
-            this.setState({content: "login"})
-        }
+        
     }
     gotoReg(){
         this.setState({ content: "register"});
@@ -55,14 +28,14 @@ class User extends React.Component{
     }
     componentWillUnmount(){
         //取消监听事件
-        this.subscribe();
+        
     }
     render(){
         const {content} = this.state;
         let Content;
         switch(content){
             case "login":
-                Content = <Login gotoRegister={() => {this.gotoReg()}} />;
+                Content = <LoginContainer gotoRegister={() => {this.gotoReg()}} history={this.props.history}/>;
                 break;
             case "register":
                 Content = <Register gotoLogin={() => {this.gotoLogin()}}/>;
@@ -71,12 +44,12 @@ class User extends React.Component{
                 Content = <UserContent/>;
                 break;
             default:
-                Content = <Login gotoRegister={() => {this.gotoReg()}}/>;
+                Content = <LoginContainer gotoRegister={() => {this.gotoReg()}} history={this.props.history}/>;
                 break;
         }
         return(
             <div className="user">
-                <Header type="user" title="个人中心" history={this.props.history}/>
+                <HeaderContainer type="user" title="个人中心" history={this.props.history}/>
                 <div className="content">
                     {Content}
                 </div>
@@ -85,12 +58,6 @@ class User extends React.Component{
         );
     }
 }
-
-
-User.contextTypes = {
-    store: PropTypes.object,
-    action: PropTypes.object
-};
 
 export default User;
 

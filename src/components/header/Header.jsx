@@ -1,44 +1,34 @@
 import React from 'react';
-import {Icon, message} from 'antd';
+import {Icon} from 'antd';
 import './header.css'
-import { PropTypes } from 'prop-types';
-// import {createBrowserHistory} from 'history';
-// const history = createBrowserHistory();
 
 class Header extends React.Component{
-    constructor(props, context) {
-        super(props, context);
+    constructor(props) {
+        super(props);
         this.state = {
-          title: this.props.title
+          title: this.props.title,
+          isLogin: this.props.isLogin
         };
     }
-    toggleUser = (e) => {
-        const {store, action} = this.context;
-        if(store.getState().username){
-            message.info("exit")
-            store.dispatch(action.userExit());
+    userExit = (e) => {
+        if(this.state.isLogin){
+            this.props.userExit();
         }
-        else{
-            message.warn("您还未登录")
-        }
+        console.log(this.state.isLogin);
     }
     MoreSelect = (e) => {
-        // message.info("success");
         this.props.history.push('/menu/' + this.props.type);
     }
     render(){
+        const Exit = this.state.isLogin? <Icon type="logout" style={{fontSize: 22}} onClick={this.userExit}/> : <div></div>;
         return(
             <div className="header">
                 <Icon type="bars" style={{fontSize: 22}} onClick={this.MoreSelect}/>
                 {this.state.title}
-                <Icon type="logout" style={{fontSize: 22}} onClick={this.toggleUser}/>
+                {Exit}
             </div>
         );
     }
 }
 
-Header.contextTypes = {
-    store: PropTypes.object,
-    action: PropTypes.object
-};
 export default Header;
