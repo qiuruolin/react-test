@@ -11,14 +11,19 @@ class User extends React.Component{
         super(props);
         this.state = {
             content: "login",
-            from: this.props.match.params.type
+            from: this.props.match.params.type,
+            isLogin: this.props.isLogin
         }
     }
-    componentDidMount() {
-        
+    componentDidMount(){
+        // this.setState({isLogin: this.props.isLogin})
     }
-    onChange = (e) => {
-        
+    componentWillReceiveProps() {
+        this.setState({isLogin: this.props.isLogin})
+        console.log("user", this.state.isLogin)
+    }
+    componentshouldupdate(){
+        return true;
     }
     gotoReg(){
         this.setState({ content: "register"});
@@ -26,32 +31,31 @@ class User extends React.Component{
     gotoLogin(){
         this.setState({ content: "login" });
     }
-    componentWillUnmount(){
-        //取消监听事件
-        
-    }
     render(){
-        const {content} = this.state;
+        const {content, isLogin} = this.state;
+        let loginVar = isLogin;
         let Content;
-        switch(content){
-            case "login":
-                Content = <LoginContainer gotoRegister={() => {this.gotoReg()}} history={this.props.history}/>;
-                break;
-            case "register":
-                Content = <Register gotoLogin={() => {this.gotoLogin()}}/>;
-                break;
-            case "user":
-                Content = <UserContent/>;
-                break;
-            default:
-                Content = <LoginContainer gotoRegister={() => {this.gotoReg()}} history={this.props.history}/>;
-                break;
+        if(isLogin){
+            Content = <UserContent/>;
+        }
+        else{
+            switch(content){
+                case "login":
+                    Content = <LoginContainer gotoRegister={() => {this.gotoReg()}} history={this.props.history}/>;
+                    break;
+                case "register":
+                    Content = <Register gotoLogin={() => {this.gotoLogin()}}/>;
+                    break;
+                default:
+                    Content = <LoginContainer gotoRegister={() => {this.gotoReg()}} history={this.props.history}/>;
+                    break;
+            }
         }
         return(
             <div className="user">
-                <HeaderContainer type="user" title="个人中心" history={this.props.history}/>
+                <HeaderContainer type="user" login={loginVar} title="个人中心" history={this.props.history}/>
                 <div className="content">
-                    {Content}
+                    {Content}{this.state.isLogin} 
                 </div>
                 <Footer/>
             </div>

@@ -1,8 +1,8 @@
 import { createStore } from 'redux';
 import reducer from '../reducer/reducer';
 
-var initState = {
-    isLogin: true
-}
+// var initState = {
+//     login: false
+// }
 
-export default createStore(reducer, initState);
+export default createStore(reducer);

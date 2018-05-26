@@ -2,17 +2,13 @@ import {connect} from 'react-redux';
 
 import Header from './Header';
 
-function mapStateToProps(state){
-    return {
-        isLogin: state.isLogin
-    }
+const mapStateToProps = (state) => {
+    return {}
 }
 
-function mapDispatchToProps(dispatch){
+const mapDispatchToProps = (dispatch) =>{
     return {
-        userExit: function(){
-            dispatch({type: "EXIT_USER"})
-        }
+        userExit: (history) => dispatch({type: "EXIT_USER"})
     }
 }
 
