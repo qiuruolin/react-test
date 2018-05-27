@@ -7,14 +7,14 @@ import Login from './login';
 // import user_m from '../../models/user';
 
 function mapStateToProps(state){
-    // console.log(state);
-    return {}
+    return {
+    }
 }
 
 function mapDispatchToProps(dispatch){
     return {
         // 139.199.64.27:3000
-        goLogin: function(username, password, history){
+        goLogin: function(username, password, history, from){
             fetch("/api/user/validateUser", {
                 method: 'post',
                 headers: {
@@ -26,11 +26,9 @@ function mapDispatchToProps(dispatch){
             }).then(function (data) {
                 if(data.code === 200){
                     dispatch({type: "SET_TOKEN", uid: data.uid});
-                    history.replace("/user");
+                    history.replace(from);
                 }
             });
-            // dispatch({type: "SET_TOKEN"});
-            // history.replace("/home");
         }
     }
 }

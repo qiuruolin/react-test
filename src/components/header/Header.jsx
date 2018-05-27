@@ -1,5 +1,5 @@
 import React from 'react';
-import {Icon, message} from 'antd';
+import {Icon} from 'antd';
 import './header.css'
 
 class Header extends React.Component{
@@ -13,20 +13,16 @@ class Header extends React.Component{
     componentDidMount(){
         this.setState({isLogin: this.props.login})
     }
-    componentWillReceiveProps() {
-        this.setState({isLogin: this.props.login})
-        console.log("header", this.state.isLogin)
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            isLogin: nextProps.login
+        });
     }
-    componentshouldupdate(){
-        return true;
+    shouldComponentUpdate(nextProps, nextState){
+        return nextProps.login !== this.props.login;
     }
     userExit = (e) => {
-        if(this.state.isLogin){
-            this.props.userExit(this.props.history);
-        }
-        else{
-            message.info("您还未登录")
-        }
+        this.props.userExit(this.props.history, this.props.from);
     }
     MoreSelect = (e) => {
         this.props.history.push('/menu/' + this.props.type);

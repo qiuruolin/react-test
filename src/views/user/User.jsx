@@ -15,15 +15,13 @@ class User extends React.Component{
             isLogin: this.props.isLogin
         }
     }
-    componentDidMount(){
-        // this.setState({isLogin: this.props.isLogin})
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            isLogin: nextProps.isLogin
+        });
     }
-    componentWillReceiveProps() {
-        this.setState({isLogin: this.props.isLogin})
-        console.log("user", this.state.isLogin)
-    }
-    componentshouldupdate(){
-        return true;
+    shouldComponentUpdate(nextProps, nextState){
+        return nextProps.isLogin !== this.props.isLogin;
     }
     gotoReg(){
         this.setState({ content: "register"});
@@ -32,8 +30,7 @@ class User extends React.Component{
         this.setState({ content: "login" });
     }
     render(){
-        const {content, isLogin} = this.state;
-        let loginVar = isLogin;
+        const {content, isLogin, from} = this.state;
         let Content;
         if(isLogin){
             Content = <UserContent/>;
@@ -41,21 +38,21 @@ class User extends React.Component{
         else{
             switch(content){
                 case "login":
-                    Content = <LoginContainer gotoRegister={() => {this.gotoReg()}} history={this.props.history}/>;
+                    Content = <LoginContainer from={from} gotoRegister={() => {this.gotoReg()}} history={this.props.history}/>;
                     break;
                 case "register":
                     Content = <Register gotoLogin={() => {this.gotoLogin()}}/>;
                     break;
                 default:
-                    Content = <LoginContainer gotoRegister={() => {this.gotoReg()}} history={this.props.history}/>;
+                    Content = <LoginContainer from={from} gotoRegister={() => {this.gotoReg()}} history={this.props.history}/>;
                     break;
             }
         }
         return(
             <div className="user">
-                <HeaderContainer type="user" login={loginVar} title="个人中心" history={this.props.history}/>
+                <HeaderContainer type="user" from="user" login={isLogin} title="个人中心" history={this.props.history}/>
                 <div className="content">
-                    {Content}{this.state.isLogin} 
+                    {Content} 
                 </div>
                 <Footer/>
             </div>

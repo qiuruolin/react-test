@@ -8,7 +8,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) =>{
     return {
-        userExit: (history) => dispatch({type: "EXIT_USER"})
+        userExit: (history, from) => {
+            dispatch({type: "EXIT_USER"})
+            history.replace(from);
+        }
     }
 }
 

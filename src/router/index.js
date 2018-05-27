@@ -9,7 +9,7 @@ class RouterIndex extends React.Component{
             <Router>
                 <Switch>
                     <Route exact path="/home" component={HomeContainer}/>
-                    <Route path='/user' component={UserContainer}/>
+                    <Route path='/user/:type' component={UserContainer}/>
                     <Redirect from="/*" to="/home" />
                 </Switch>
             </Router>

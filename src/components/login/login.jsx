@@ -31,7 +31,7 @@ class Login extends React.Component{
             message.error("用户名或密码不能为空")
         }
         else{
-            this.props.goLogin(this.state.userName, this.state.password, this.props.history);
+            this.props.goLogin(this.state.userName, this.state.password, this.props.history, this.props.from);
         }
     }
     render(){
