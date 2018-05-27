@@ -2,7 +2,7 @@ import React from 'react';
 import HeaderContainer from '../../components/header/HeaderContainer';
 import Footer from '../../components/footer/Footer';
 import LoginContainer from '../../components/login/LoginContainer';
-import Register from '../../components/register/register'
+import RegisterContainer from '../../components/register/RegisterContainer'
 import './user.css';
 import UserContent from '../../components/user/userContent';
 
@@ -29,6 +29,9 @@ class User extends React.Component{
     gotoLogin(){
         this.setState({ content: "login" });
     }
+    regSuccess(){
+        this.setState({ content: "login" });
+    }
     render(){
         const {content, isLogin, from} = this.state;
         let Content;
@@ -41,7 +44,7 @@ class User extends React.Component{
                     Content = <LoginContainer from={from} gotoRegister={() => {this.gotoReg()}} history={this.props.history}/>;
                     break;
                 case "register":
-                    Content = <Register gotoLogin={() => {this.gotoLogin()}}/>;
+                    Content = <RegisterContainer registerSuccess={() => this.regSuccess()} gotoLogin={() => {this.gotoLogin()}} history={this.props.history}/>;
                     break;
                 default:
                     Content = <LoginContainer from={from} gotoRegister={() => {this.gotoReg()}} history={this.props.history}/>;

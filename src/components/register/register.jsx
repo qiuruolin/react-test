@@ -46,8 +46,22 @@ class Register extends React.Component{
         if(userName === "" || password === "" || passwordRepeat === "" || mail === ""){
             message.error("请填写完整信息")
         }
+        else if(password !== passwordRepeat){
+            message.error("两次密码输入不同哦")
+        }
         else{
-            message.info("success")
+            let user = {
+                username: userName,
+                password: password,
+                email: mail
+            }
+            this.props.register(user, this.props.history);
+            this.setState({
+                userName: "",
+                password: "",
+                mail: "",
+                passwordRepeat: ""
+            })
         }
     }
     render(){
