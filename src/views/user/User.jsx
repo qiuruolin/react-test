@@ -21,7 +21,7 @@ class User extends React.Component{
         });
     }
     shouldComponentUpdate(nextProps, nextState){
-        return nextProps.isLogin !== this.props.isLogin;
+        return nextProps.isLogin !== this.props.isLogin || nextState.content !== this.state.content;
     }
     gotoReg(){
         this.setState({ content: "register"});
@@ -50,7 +50,7 @@ class User extends React.Component{
         }
         return(
             <div className="user">
-                <HeaderContainer type="user" from="user" login={isLogin} title="个人中心" history={this.props.history}/>
+                <HeaderContainer from="user" login={isLogin} title="个人中心" history={this.props.history}/>
                 <div className="content">
                     {Content} 
                 </div>

@@ -3,6 +3,7 @@ import HeaderContainer from '../../components/header/HeaderContainer';
 import './home.css'
 import Footer from '../../components/footer/Footer';
 import Tab from '../../components/tabs/Tab';
+import NoAuthorize from '../../components/noAuthorize/noAuthorize';
 
 class Home extends React.Component{
     constructor(props){
@@ -20,10 +21,10 @@ class Home extends React.Component{
         return nextProps.isLogin !== this.props.isLogin;
     }
     render(){
-        let Content = this.state.isLogin ? <Tab/> : "";
+        let Content = this.state.isLogin ? <Tab/> : <NoAuthorize from="home" history={this.props.history}/>;
         return(
             <div>
-                <HeaderContainer type="home" from="home" login={this.state.isLogin} title="首页" history={this.props.history}/>
+                <HeaderContainer from="home" login={this.state.isLogin} title="首页" history={this.props.history}/>
                 {Content}
                 <Footer/>
             </div>

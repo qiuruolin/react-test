@@ -26,7 +26,12 @@ function mapDispatchToProps(dispatch){
             }).then(function (data) {
                 if(data.code === 200){
                     dispatch({type: "SET_TOKEN", uid: data.uid});
-                    history.replace(from);
+                    if(from === "*"){
+                        history.replace(from);
+                    }
+                    else{
+                        history.replace("/" + from);
+                    }
                 }
             });
         }

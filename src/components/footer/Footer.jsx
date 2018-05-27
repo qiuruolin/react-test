@@ -9,7 +9,7 @@ class Footer extends React.Component{
             <div className="footer">
                 <NavLink activeClassName="active" to="/home"><Icon type="home"><span className="title">首页</span></Icon></NavLink>
                 <NavLink activeClassName="active" to="/order"><Icon type="file-text"><span className="title">订单</span></Icon></NavLink>
-                <NavLink activeClassName="active" to="/user/user"><Icon type="user"><span className="title">我的</span></Icon></NavLink>
+                <NavLink activeClassName="active" to="/user/*"><Icon type="user"><span className="title">我的</span></Icon></NavLink>
             </div>
         );
     }
