@@ -6,12 +6,12 @@ import Login from './login';
 
 // import user_m from '../../models/user';
 
-function mapStateToProps(state){
+const mapStateToProps = (state) => {
     return {
     }
 }
 
-function mapDispatchToProps(dispatch){
+const mapDispatchToProps = (dispatch) => {
     return {
         // 139.199.64.27:3000
         goLogin: function(username, password, history, from){
