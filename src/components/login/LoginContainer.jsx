@@ -1,17 +1,12 @@
 import { connect } from 'react-redux';
-
 import Login from './login';
-
-// const HOST = "http://localhost:3001";
-
-// import user_m from '../../models/user';
+import { message } from 'antd';
 
 const mapStateToProps = (state) => {
-    return {
-    }
+    return {}
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, props) => {
     return {
         // 139.199.64.27:3000
         goLogin: function(username, password, history, from){
@@ -22,7 +17,7 @@ const mapDispatchToProps = (dispatch) => {
                 },
                 body: `username=${username}&password=${password}`
             }).then(function(res) {
-                return res.json();
+                return res.json()
             }).then(function (data) {
                 if(data.code === 200){
                     dispatch({type: "SET_TOKEN", uid: data.uid});
@@ -32,6 +27,9 @@ const mapDispatchToProps = (dispatch) => {
                     else{
                         history.replace("/" + from);
                     }
+                }
+                else{
+                    message.error("账号或密码输入错误，请重新输入");
                 }
             });
         }

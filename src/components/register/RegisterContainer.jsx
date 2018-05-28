@@ -19,12 +19,14 @@ const mapDispatchToProps = (dispatch, props) => {
                 },
                 body: `user=${userString}`
             }).then(function(res){
-                return res.json();
+                return res.json()
             }).then(function(data){
-                console.log(history);
                 if(data.code === 200){
                     message.success("注册成功，请登录");
                     props.registerSuccess();
+                }
+                else{
+                    message.error("注册失败，请稍后再试");
                 }
             })
         }
